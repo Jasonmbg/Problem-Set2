@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Efstathios-Iason Vlachavas">
+<meta name="dcterms.date" content="2024-02-04">
+
+<title>Data_Vis_Problem_Set_Week_2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Data_Vis_PS_2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Data_Vis_PS_2_files/libs/quarto-html/quarto.js"></script>
+<script src="Data_Vis_PS_2_files/libs/quarto-html/popper.min.js"></script>
+<script src="Data_Vis_PS_2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Data_Vis_PS_2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Data_Vis_PS_2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Data_Vis_PS_2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Data_Vis_PS_2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Data_Vis_PS_2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Data_Vis_PS_2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview-of-the-problem-set-2-using-quarto" id="toc-overview-of-the-problem-set-2-using-quarto" class="nav-link active" data-scroll-target="#overview-of-the-problem-set-2-using-quarto">Overview of the Problem set 2 using Quarto</a>
+  <ul class="collapse">
+  <li><a href="#collectively-both-aforementioned-plots-highlight-the-significant-overall-reduction-of-measles-incidence-rates-after-the-introduction-of-the-vaccination-which-in-parallel-could-reflect-further-specific-geographical-and-epidemiological-characteristics-of-each-individual-us-state-population-in-concordance-with-the-related-vaccination-rate-over-time-this-correlates-also-well-with-other-published-data-highlighting-the-fact-that-approximately-more-than-500k-documented-cases-occurred-each-year-in-the-u.s.-in-the-20th-century-while-in-2020-were-presented-only-13-incidents-httpswww.mayoclinic.orgdiseases-conditionshistory-disease-outbreaks-vaccine-timelinemeasles." id="toc-collectively-both-aforementioned-plots-highlight-the-significant-overall-reduction-of-measles-incidence-rates-after-the-introduction-of-the-vaccination-which-in-parallel-could-reflect-further-specific-geographical-and-epidemiological-characteristics-of-each-individual-us-state-population-in-concordance-with-the-related-vaccination-rate-over-time-this-correlates-also-well-with-other-published-data-highlighting-the-fact-that-approximately-more-than-500k-documented-cases-occurred-each-year-in-the-u.s.-in-the-20th-century-while-in-2020-were-presented-only-13-incidents-httpswww.mayoclinic.orgdiseases-conditionshistory-disease-outbreaks-vaccine-timelinemeasles." class="nav-link" data-scroll-target="#collectively-both-aforementioned-plots-highlight-the-significant-overall-reduction-of-measles-incidence-rates-after-the-introduction-of-the-vaccination-which-in-parallel-could-reflect-further-specific-geographical-and-epidemiological-characteristics-of-each-individual-us-state-population-in-concordance-with-the-related-vaccination-rate-over-time-this-correlates-also-well-with-other-published-data-highlighting-the-fact-that-approximately-more-than-500k-documented-cases-occurred-each-year-in-the-u.s.-in-the-20th-century-while-in-2020-were-presented-only-13-incidents-httpswww.mayoclinic.orgdiseases-conditionshistory-disease-outbreaks-vaccine-timelinemeasles.">Collectively, both aforementioned plots highlight the significant overall reduction of Measles incidence rates, after the introduction of the vaccination; which in parallel could reflect further specific geographical and epidemiological characteristics of each individual US state population, in concordance with the related vaccination rate over time; this correlates also well with other published data, highlighting the fact that approximately more than 500k documented cases occurred each year in the U.S. in the 20th century, while in 2020 were presented only 13 incidents (https://www.mayoclinic.org/diseases-conditions/history-disease-outbreaks-vaccine-timeline/measles).</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data_Vis_Problem_Set_Week_2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Efstathios-Iason Vlachavas </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 4, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview-of-the-problem-set-2-using-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-the-problem-set-2-using-quarto">Overview of the Problem set 2 using Quarto</h2>
+<section id="measles-vaccination-is-an-immunization-designed-to-protect-against-measles-a-highly-contagious-viral-infection.-the-mmr-vaccine-is-a-highly-effective-and-safe-medication-to-prevent-measles-reducing-the-risk-of-infection-complications-and-outbreaks.-the-world-health-organization-who-recommends-routine-measles-vaccination-as-part-of-childhood-immunization-programs-globally-to-achieve-high-levels-of-population-immunity-and-prevent-the-spread-of-the-virus-httpswww.cdc.govvaccinesvpdmeaslesindex.html.-on-this-premise-in-order-to-effectively-communicate-science-and-democratize-knowledge-we-will-illustrate-an-example-of-impact-of-vaccines-on-battling-infectious-diseases-using-publicly-available-epidimiological-data." class="level4">
+<h4 class="anchored" data-anchor-id="measles-vaccination-is-an-immunization-designed-to-protect-against-measles-a-highly-contagious-viral-infection.-the-mmr-vaccine-is-a-highly-effective-and-safe-medication-to-prevent-measles-reducing-the-risk-of-infection-complications-and-outbreaks.-the-world-health-organization-who-recommends-routine-measles-vaccination-as-part-of-childhood-immunization-programs-globally-to-achieve-high-levels-of-population-immunity-and-prevent-the-spread-of-the-virus-httpswww.cdc.govvaccinesvpdmeaslesindex.html.-on-this-premise-in-order-to-effectively-communicate-science-and-democratize-knowledge-we-will-illustrate-an-example-of-impact-of-vaccines-on-battling-infectious-diseases-using-publicly-available-epidimiological-data.">Measles vaccination is an immunization designed to protect against measles, a highly contagious viral infection. The MMR vaccine is a highly effective and safe medication to prevent measles, reducing the risk of infection, complications, and outbreaks. The World Health Organization (WHO) recommends routine measles vaccination as part of childhood immunization programs globally to achieve high levels of population immunity and prevent the spread of the virus (https://www.cdc.gov/vaccines/vpd/measles/index.html). On this premise, in order to effectively communicate science and democratize knowledge, we will illustrate an example of impact of vaccines on battling infectious diseases, using publicly available epidimiological data.</h4>
+<p><em>This is also part of the Problem Set 2 of the DECIPHER LIFE SCIENCES MOOC</em></p>
+<ol type="1">
+<li>Load the dslabs package and figure out what is in the us_contagious_diseases dataset. Create a data frame, call it avg, that has a column for year, and a rate column containing the cases of Measles per 10,000 people per year in the US. Because we start in 1928, exclude Alaska and Hawaii. Make sure to take into account the number of weeks reporting each year. If a week was not report, it should not be included in the calculation of the rate.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| load necessary R packages and proceed with fetching the available data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>avg <span class="ot">&lt;-</span> us_contagious_diseases <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>,<span class="st">"Alaska"</span>) <span class="sc">&amp;</span> disease <span class="sc">==</span> <span class="st">"Measles"</span> <span class="sc">&amp;</span> weeks_reporting <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">rate =</span> <span class="fu">sum</span>(count <span class="sc">/</span> weeks_reporting <span class="sc">*</span> <span class="dv">52</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sum</span>(population) <span class="sc">*</span> <span class="dv">10000</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(avg,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 x 2
+   year  rate
+  &lt;dbl&gt; &lt;dbl&gt;
+1  1928  43.2
+2  1929  29.6</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Use the data frame avg to make a trend plot showing the cases rate for Measles per year. Add a vertical line showing the year the Measles vaccines was introduced.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| vaccine introduction year = 1963  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>avg <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, rate)) <span class="sc">+</span> <span class="fu">geom_line</span>()  <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span> <span class="fu">labs</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Data_Vis_PS_2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Add a grey trend line for each state to the plot above. Use a transformation that keeps the high rates from dominating the figure.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>us_contagious_diseases <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>,<span class="st">"Alaska"</span>) <span class="sc">&amp;</span> disease <span class="sc">==</span> <span class="st">"Measles"</span> <span class="sc">&amp;</span> weeks_reporting <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">rate =</span> count <span class="sc">/</span> population <span class="sc">*</span> <span class="dv">10000</span> <span class="sc">*</span> <span class="dv">52</span> <span class="sc">/</span> weeks_reporting) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">reorder</span>(state, <span class="fu">ifelse</span>(year <span class="sc">&lt;=</span> <span class="dv">1963</span>, rate, <span class="cn">NA</span>), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(rate)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(year, rate, <span class="at">group =</span> state),  <span class="at">color =</span> <span class="st">"grey50"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.16</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"sqrt"</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">125</span>, <span class="dv">300</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Measles cases per 10,000 by state"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Rate by state"</span>) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Data_Vis_PS_2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>In the plot above we cant tell which state is which curve. Using color would be challenging as it is hard if not impossible to find 48 colors humans can distinguish. To make a plot where you can compare states knowing which is which, use one of the axis for state and the other for year, and then use hue or intensity as a visual cue for rates. Use a sqrt transformation to avoid the higher rates taking up all the color scale. Use grey to denote missing data. Order the states based on their highest peak. You can include Hawaii and Alaska.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>reds <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">9</span>, <span class="st">"Reds"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>us_contagious_diseases <span class="sc">|&gt;</span> <span class="fu">filter</span>(disease <span class="sc">==</span> <span class="st">"Measles"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rate =</span> count <span class="sc">/</span> population <span class="sc">*</span> <span class="dv">10000</span> <span class="sc">*</span> <span class="dv">52</span> <span class="sc">/</span> weeks_reporting) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">reorder</span>(state, <span class="fu">ifelse</span>(year <span class="sc">&lt;=</span> <span class="dv">1963</span>, rate, <span class="cn">NA</span>), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, state, <span class="at">fill =</span> rate)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"grey50"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">9</span>, <span class="st">"Reds"</span>), <span class="at">trans =</span> <span class="st">"sqrt"</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Measles"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Data_Vis_PS_2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="collectively-both-aforementioned-plots-highlight-the-significant-overall-reduction-of-measles-incidence-rates-after-the-introduction-of-the-vaccination-which-in-parallel-could-reflect-further-specific-geographical-and-epidemiological-characteristics-of-each-individual-us-state-population-in-concordance-with-the-related-vaccination-rate-over-time-this-correlates-also-well-with-other-published-data-highlighting-the-fact-that-approximately-more-than-500k-documented-cases-occurred-each-year-in-the-u.s.-in-the-20th-century-while-in-2020-were-presented-only-13-incidents-httpswww.mayoclinic.orgdiseases-conditionshistory-disease-outbreaks-vaccine-timelinemeasles." class="level3">
+<h3 class="anchored" data-anchor-id="collectively-both-aforementioned-plots-highlight-the-significant-overall-reduction-of-measles-incidence-rates-after-the-introduction-of-the-vaccination-which-in-parallel-could-reflect-further-specific-geographical-and-epidemiological-characteristics-of-each-individual-us-state-population-in-concordance-with-the-related-vaccination-rate-over-time-this-correlates-also-well-with-other-published-data-highlighting-the-fact-that-approximately-more-than-500k-documented-cases-occurred-each-year-in-the-u.s.-in-the-20th-century-while-in-2020-were-presented-only-13-incidents-httpswww.mayoclinic.orgdiseases-conditionshistory-disease-outbreaks-vaccine-timelinemeasles.">Collectively, both aforementioned plots highlight the significant overall reduction of Measles incidence rates, after the introduction of the vaccination; which in parallel could reflect further specific geographical and epidemiological characteristics of each individual US state population, in concordance with the related vaccination rate over time; this correlates also well with other published data, highlighting the fact that approximately more than 500k documented cases occurred each year in the U.S. in the 20th century, while in 2020 were presented only 13 incidents (https://www.mayoclinic.org/diseases-conditions/history-disease-outbreaks-vaccine-timeline/measles).</h3>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
